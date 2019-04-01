@@ -1,5 +1,4 @@
-# Medical-Community-Web-Service
+# Medical-Information-Notification-Chatbot
 
-아픈사람 커뮤니티에 필요한 핵심적인 기능 개발
-
-아픈사람 커뮤니티에 필요한 의학 데이터를 크롤링하고, 이를 정제하여 최종적으로 챗봇으로 가시화하는 프
+CS Project with Toyinteractive(Team Proejct)
+--------------------------------------------------
