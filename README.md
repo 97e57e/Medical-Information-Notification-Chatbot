@@ -1,4 +1,4 @@
-# Medical-Information-Service-Chatbot
+# Medical-Information-Notification-Chatbot
 
-CS Project with Toyinteractive(Team Proejct)
+Chatbot Service Development with Python
 --------------------------------------------------
