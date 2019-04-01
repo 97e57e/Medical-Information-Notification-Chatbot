@@ -1,4 +1,4 @@
-# Medical-Information-Notification-Chatbot
+# Medical-Information-Service-Chatbot
 
 CS Project with Toyinteractive(Team Proejct)
 --------------------------------------------------
