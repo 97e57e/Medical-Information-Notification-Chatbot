@@ -2,7 +2,7 @@
 
 Chatbot Service Development with Python
 
-If you have any aches and pains, tell the chatbot where you're sick
+If you have any aches and pains, tell the chatbot where you're sick<br>
 Then, chatbot will diagnose you for what kind of disease you have. Also chatbot will tell you a dietary regime and prevention for diseases.
 
 You can search for curious diseases.
@@ -18,7 +18,7 @@ You can search for curious diseases.
 
 ## Progress
 
-We got medical data such as definition, cause, and symptoms of disease from Naver Encyclopedia by crawling
+We got medical data such as definition, cause, and symptoms of disease from Naver Encyclopedia by crawling<br>
 And each item was put into the database.
 
 ![DB](https://user-images.githubusercontent.com/41745717/56972604-3df94400-6ba6-11e9-930b-3a112187e267.png)
