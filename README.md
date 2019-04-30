@@ -21,7 +21,8 @@ You can search for curious diseases.
 We got medical data such as definition, cause, and symptoms of disease from Naver Encyclopedia by crawling
 And each item was put into the database.
 
-/* img */
+![DB](https://user-images.githubusercontent.com/41745717/56972604-3df94400-6ba6-11e9-930b-3a112187e267.png)
+
 
 ### How to use BeautifulSoup4
 ```
