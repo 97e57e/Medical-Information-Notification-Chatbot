@@ -22,6 +22,7 @@ cur.execute("UPDATE sqlite_sequence SET seq = 0 WHERE name = 'disease'")
 #           guide : 가이드                             #
 #           therapy : 식이요법                          #
 #           sub : 하위질병                              #
+#			summary :  요약							 #
 ########################################################
 
 page_num = 1
@@ -54,9 +55,9 @@ with conn:
             disease_name = bs_obj2.find("title").text  # 질병의 이름
             h3_tags = bs_obj2.findAll("h3", {"class": "stress"})  # 증상, 원인, 하위질병 등 목차
             p_tags = bs_obj2.findAll("p", {"class": "txt"})  # 질병에 대한 정보(정의, 증상 등)
-			# 
-			#  summary = bs_obj2.find("dl",{"class": "summary_area"}) # 요약 관련 테이블 엔트리 추가필요
-            #  print(summary.contents[2].strip())
+            
+            summary = bs_obj2.find("dl",{"class": "summary_area"}) # 요약 엔트리
+            cur.execute("UPDATE disease SET define = (?) where id = (?)", (summary.contents[2].strip(), key,))
             
 
             cur.execute("insert into disease(name) values(?) ", (disease_name,))
