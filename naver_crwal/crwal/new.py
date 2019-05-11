@@ -32,7 +32,7 @@ crawling_data = requests.get(address)  # address에 access해서, data crawling�
 
 with conn:
     key = 1
-    while page_num <= 91 :
+    while page_num <= 91:
 
         main_url = "https://terms.naver.com/list.nhn?cid=51007&categoryId=51007&so=date.dsc&viewType=&categoryType=" + "&page=" + str(page_num)
         main_html = urlopen(main_url)
@@ -62,6 +62,13 @@ with conn:
             cur.execute("UPDATE disease SET summary = (?) where id = (?)", (summary.contents[2].strip(), key,))
 
             print('병명 : ' + disease_name + '\n')
+            try:
+                profile_tb = bs_obj2.find("table", {"class": "tmp_profile_tb"}).find("tbody").contents[3].text.split()
+                tb_arr = profile_tb[2:len(profile_tb)]
+            except IndexError:
+                tb_arr = "none"
+
+            cur.execute("UPDATE disease SET organs = (?) where id = (?)", (" ".join(tb_arr), key,))
 
             for h3 in h3_tags:# 각 징별의 정보 가져오기
                 if('정의' in h3.text):
