@@ -63,8 +63,8 @@ with conn:
 
             print('병명 : ' + disease_name + '\n')
             try:
-                profile_tb = bs_obj2.find("table", {"class": "tmp_profile_tb"}).find("tbody").contents[3].text.split()
-                tb_arr = profile_tb[2:len(profile_tb)]
+                profile_tb = bs_obj2.find("table", {"class": "tmp_profile_tb"}).find("tbody").text.split()          
+                tb_arr = [profile_tb[i+1:len(profile_tb)] for i, x in enumerate(profile_tb) if '신체기관' in x][0]
             except IndexError:
                 tb_arr = "none"
 
