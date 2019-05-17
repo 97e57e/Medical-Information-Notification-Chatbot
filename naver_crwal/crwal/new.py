@@ -63,12 +63,13 @@ with conn:
 
             print('병명 : ' + disease_name )
             e=0
-            try:
-                st_tb = bs_obj2.find("table", {"class": "tmp_profile_tb"}).find("tbody").text
-                st_tb = st_tb[st_tb.find('신체기관')+7:]
+            st_tb = bs_obj2.find("table", {"class": "tmp_profile_tb"}).find("tbody").text
+            pos = st_tb.find('신체기관')
+            if pos != -1:
+                st_tb = st_tb[pos+7:]
                 tb_arr=st_tb[:st_tb.find('\n\n')].split()
                 e=len(tb_arr)
-            except IndexError:
+            else:
                 tb_arr = "none"
             
             cur.execute("UPDATE disease SET organs = (?) where id = (?)", (" ".join(tb_arr), key,))
