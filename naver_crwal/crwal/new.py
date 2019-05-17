@@ -61,14 +61,20 @@ with conn:
             summary = bs_obj2.find("dl",{"class": "summary_area"}) # 요약 엔트리
             cur.execute("UPDATE disease SET summary = (?) where id = (?)", (summary.contents[2].strip(), key,))
 
-            print('병명 : ' + disease_name + '\n')
+            print('병명 : ' + disease_name )
+            e=0
             try:
-                profile_tb = bs_obj2.find("table", {"class": "tmp_profile_tb"}).find("tbody").text.split()          
-                tb_arr = [profile_tb[i+1:len(profile_tb)] for i, x in enumerate(profile_tb) if '신체기관' in x][0]
+                st_tb = bs_obj2.find("table", {"class": "tmp_profile_tb"}).find("tbody").text
+                st_tb = st_tb[st_tb.find('신체기관')+7:]
+                tb_arr=st_tb[:st_tb.find('\n\n')].split()
+                e=len(tb_arr)
             except IndexError:
                 tb_arr = "none"
-
+            
             cur.execute("UPDATE disease SET organs = (?) where id = (?)", (" ".join(tb_arr), key,))
+            cur.execute("UPDATE disease SET organTom  = (?) where id = (?)", (e ,key, ))
+            print('기관 : '+" ".join(tb_arr))
+
 
             for h3 in h3_tags:# 각 징별의 정보 가져오기
                 if('정의' in h3.text):
